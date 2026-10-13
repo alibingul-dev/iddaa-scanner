@@ -21,7 +21,7 @@ jobs:
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase -q
           git add backtest.json backtest
           git diff --cached --quiet || git commit -m "backtest $(date -u +%Y-%m-%d)"
+          git pull --rebase -q -X theirs || true
           git push
