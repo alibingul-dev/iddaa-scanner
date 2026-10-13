@@ -1,0 +1,237 @@
+date,lg,match,pick,odd,fair,ev,stake,win,pnl,bank
+2026-01-01,E1,Ipswich - Oxford,2,11.0,9.99,0.1007,50.0,False,-50.0,0.0
+2026-01-01,E1,Preston - Sheffield Weds,2,7.0,6.55,0.0681,50.0,False,-50.0,0.0
+2026-01-03,P1,Benfica - Estoril,2,13.0,11.99,0.0841,50.0,False,-50.0,0.0
+2026-01-04,F1,Paris SG - Paris FC,X,7.5,6.79,0.1051,50.0,False,-50.0,0.0
+2026-01-05,F2,Montpellier - Dunkerque,X,3.2,2.94,0.0876,50.0,False,-50.0,0.0
+2026-01-10,I2,Avellino - Sampdoria,1,3.0,2.46,0.2204,50.0,True,100.0,150.0
+2026-01-10,N1,PSV Eindhoven - Excelsior,2,15.0,14.05,0.0679,50.0,False,-50.0,100.0
+2026-01-12,I1,Juventus - Cremonese,2,13.0,12.0,0.0836,50.0,False,-50.0,50.0
+2026-01-14,D1,FC Koln - Bayern Munich,1,10.5,9.85,0.0662,50.0,False,-50.0,0.0
+2026-01-17,T1,Galatasaray - Gaziantep,2,15.0,13.51,0.1103,50.0,False,-50.0,0.0
+2026-01-17,P1,Rio Ave - Benfica,1,10.0,9.12,0.0964,50.0,False,-50.0,0.0
+2026-01-24,E3,Notts County - Crewe,X,3.6,2.09,0.7223,50.0,False,-50.0,0.0
+2026-01-24,F2,Guingamp - Troyes,2,2.55,1.97,0.2946,50.0,False,-50.0,0.0
+2026-01-24,F2,Red Star - Boulogne,1,1.8,1.69,0.0641,50.0,False,-50.0,0.0
+2026-01-24,I2,Mantova - Venezia,1,5.75,5.52,0.0422,50.0,False,-50.0,0.0
+2026-01-24,E2,Doncaster - Wigan,X,3.2,2.9,0.1018,50.0,True,110.0,160.0
+2026-01-24,E3,Salford - Bristol Rvs,2,4.33,2.16,1.0022,50.0,False,-50.0,110.0
+2026-01-24,E3,Walsall - Accrington,2,4.33,2.08,1.0857,50.0,False,-50.0,60.0
+2026-01-25,G1,OFI Crete - Panetolikos,2,4.0,3.65,0.0947,50.0,False,-50.0,10.0
+2026-01-25,G1,Atromitos - Panathinaikos,1,6.0,5.67,0.0591,50.0,False,-50.0,0.0
+2026-01-25,P1,Benfica - Estrela,2,19.0,16.9,0.1246,50.0,False,-50.0,0.0
+2026-01-26,SP2,Ceuta - Cultural Leonesa,2,3.75,3.03,0.2377,50.0,False,-50.0,0.0
+2026-01-31,I2,Avellino - Cesena,1,3.3,2.07,0.5981,50.0,True,115.0,165.0
+2026-01-31,EC,Boreham Wood - Boston Utd,X,5.0,4.28,0.1691,50.0,False,-50.0,115.0
+2026-01-31,SC2,Kelty Hearts - Hamilton,X,3.5,3.36,0.0426,50.0,True,125.0,240.0
+2026-02-07,F2,Nancy - Troyes,X,3.0,1.87,0.6066,60.0,False,-60.0,180.0
+2026-02-08,SP2,La Coruna - Albacete,2,4.5,3.55,0.2659,50.0,False,-50.0,130.0
+2026-02-08,G1,Aris - PAOK,1,3.8,2.51,0.5112,50.0,False,-50.0,80.0
+2026-02-08,G1,Olympiakos - Panathinaikos,X,4.1,3.83,0.0693,50.0,False,-50.0,30.0
+2026-02-09,T1,Kayserispor - Kocaelispor,X,3.1,2.62,0.1847,50.0,False,-50.0,0.0
+2026-02-09,T1,Fenerbahce - Genclerbirligi,2,13.0,11.47,0.1333,50.0,False,-50.0,0.0
+2026-02-14,EC,Braintree Town - Solihull,1,3.4,3.29,0.0326,50.0,False,-50.0,0.0
+2026-02-14,EC,Eastleigh - Boreham Wood,1,4.33,2.67,0.619,50.0,False,-50.0,0.0
+2026-02-14,EC,Scunthorpe - Boston Utd,2,5.25,1.97,1.6609,50.0,True,212.5,262.5
+2026-02-14,EC,Southend - Morecambe,2,6.5,3.79,0.7162,65.62,False,-65.62,196.88
+2026-02-14,EC,Wealdstone - York,1,6.5,3.66,0.7777,50.0,False,-50.0,146.88
+2026-02-14,SC2,Stenhousemuir - Montrose,2,5.5,3.3,0.6647,50.0,False,-50.0,96.88
+2026-02-14,SC2,Hamilton - Inverness C,1,4.75,2.93,0.6221,50.0,False,-50.0,46.88
+2026-02-14,G1,Volos NFC - Aris,1,4.5,2.61,0.7234,50.0,False,-50.0,0.0
+2026-02-15,SC0,Kilmarnock - Celtic,1,7.5,6.91,0.0855,50.0,False,-50.0,0.0
+2026-02-15,T1,Goztep - Kayserispor,2,6.0,4.16,0.4409,50.0,False,-50.0,0.0
+2026-02-15,SC0,Motherwell - Aberdeen,2,5.5,2.88,0.9083,50.0,False,-50.0,0.0
+2026-02-15,SP2,Huesca - Ceuta,2,3.75,3.32,0.1309,50.0,False,-50.0,0.0
+2026-02-15,T1,Buyuksehyr - Besiktas,X,3.6,3.09,0.1651,50.0,False,-50.0,0.0
+2026-02-15,P1,Sp Lisbon - Famalicao,2,11.0,10.23,0.0757,50.0,False,-50.0,0.0
+2026-02-21,G1,Olympiakos - Panetolikos,2,26.0,16.64,0.5624,50.0,False,-50.0,0.0
+2026-02-21,P1,Benfica - AVS,2,21.0,17.3,0.2136,50.0,False,-50.0,0.0
+2026-02-22,G1,OFI Crete - Panathinaikos,X,3.4,2.13,0.5997,50.0,False,-50.0,0.0
+2026-02-22,G1,Panserraikos - Volos NFC,1,4.5,3.12,0.4403,50.0,True,175.0,225.0
+2026-02-22,G1,Larisa - PAOK,1,10.0,2.0,3.9902,56.25,False,-56.25,168.75
+2026-02-22,G1,Aris - Kifisia,2,5.25,2.13,1.4629,50.0,False,-50.0,118.75
+2026-02-22,G1,AEK - Levadeiakos,2,8.0,3.7,1.1646,50.0,False,-50.0,68.75
+2026-02-23,SP2,Cadiz - Sociedad B,2,3.6,2.68,0.3415,50.0,True,130.0,198.75
+2026-02-23,F2,Le Mans - Guingamp,X,3.2,3.06,0.0469,50.0,True,110.0,308.75
+2026-02-23,E3,Walsall - Milton Keynes Dons,1,2.85,2.65,0.0738,77.19,False,-77.19,231.56
+2026-02-25,SP2,Ceuta - Cordoba,X,3.3,3.19,0.0341,57.89,False,-57.89,173.67
+2026-02-28,EC,Halifax - Sutton,2,3.5,3.39,0.0329,50.0,False,-50.0,123.67
+2026-02-28,G1,OFI Crete - Larisa,X,3.0,2.91,0.0307,50.0,False,-50.0,73.67
+2026-03-01,G1,Panserraikos - Olympiakos,1,19.0,10.01,0.8985,50.0,False,-50.0,23.67
+2026-03-04,EC,Gateshead - Braintree Town,X,3.9,3.69,0.0573,50.0,False,-50.0,0.0
+2026-03-07,F2,Le Mans - Annecy,X,3.1,2.91,0.064,50.0,False,-50.0,0.0
+2026-03-07,EC,Altrincham - Truro,2,3.6,2.36,0.5268,50.0,False,-50.0,0.0
+2026-03-07,EC,Forest Green - Aldershot,2,3.9,3.64,0.0721,50.0,False,-50.0,0.0
+2026-03-07,EC,Sutton - Morecambe,X,3.7,3.58,0.0322,50.0,False,-50.0,0.0
+2026-03-07,SC2,Inverness C - Montrose,2,10.0,2.05,3.8826,50.0,False,-50.0,0.0
+2026-03-07,B1,Dender - Charleroi,X,3.3,1.85,0.7876,50.0,True,115.0,165.0
+2026-03-08,G1,Asteras Tripolis - Panserraikos,2,6.5,3.58,0.8133,50.0,True,275.0,440.0
+2026-03-08,G1,Volos NFC - OFI Crete,X,3.2,2.91,0.1015,110.0,True,242.0,682.0
+2026-03-08,SP2,Leganes - Eibar,X,3.0,1.79,0.6782,170.5,False,-170.5,511.5
+2026-03-09,T1,Eyupspor - Kocaelispor,X,3.2,2.99,0.0689,127.88,False,-127.88,383.62
+2026-03-09,T1,Kayserispor - Trabzonspor,X,3.4,3.04,0.1183,95.91,False,-95.91,287.71
+2026-03-09,SP2,Almeria - Cultural Leonesa,2,5.75,3.01,0.9105,71.93,False,-71.93,215.78
+2026-03-09,P1,Tondela - Rio Ave,X,3.25,3.13,0.0388,53.95,False,-53.95,161.83
+2026-03-15,P1,AVS - Santa Clara,X,3.3,3.05,0.0828,50.0,False,-50.0,111.83
+2026-03-15,G1,PAOK - Levadeiakos,2,8.0,6.27,0.2766,50.0,False,-50.0,61.83
+2026-03-15,T1,Genclerbirligi - Besiktas,2,1.57,1.47,0.0712,50.0,True,28.5,90.33
+2026-03-15,G1,Atromitos - AEK,X,3.9,1.9,1.0521,50.0,True,145.0,235.33
+2026-03-15,G1,Panathinaikos - Panetolikos,2,9.5,5.9,0.6091,58.83,False,-58.83,176.5
+2026-03-15,SP2,Sp Gijon - Castellon,X,3.4,2.69,0.2641,50.0,False,-50.0,126.5
+2026-03-16,SP2,Albacete - Las Palmas,X,3.3,2.94,0.1216,50.0,False,-50.0,76.5
+2026-03-16,F2,Annecy - Troyes,X,3.1,2.98,0.04,50.0,False,-50.0,26.5
+2026-03-21,E3,Bromley - Colchester,X,3.1,1.82,0.7071,50.0,False,-50.0,0.0
+2026-03-21,EC,York - Brackley Town,2,15.0,12.44,0.206,50.0,False,-50.0,0.0
+2026-03-21,SC2,Alloa - Inverness C,X,3.5,2.24,0.5655,50.0,True,125.0,175.0
+2026-03-22,I2,Sudtirol - Frosinone,1,2.75,2.43,0.1313,50.0,False,-50.0,125.0
+2026-03-22,I2,Sampdoria - Avellino,2,4.1,3.02,0.3578,50.0,False,-50.0,75.0
+2026-03-22,B1,RAAL La Louviere - Genk,X,3.3,1.99,0.6577,50.0,True,115.0,190.0
+2026-04-03,EC,Aldershot - Sutton,X,3.6,3.27,0.0997,50.0,True,130.0,320.0
+2026-04-04,SC3,East Kilbride - Annan Athletic,X,3.9,1.9,1.0534,80.0,False,-80.0,240.0
+2026-04-05,G1,Volos NFC - OFI Crete,X,3.25,3.02,0.0759,60.0,True,135.0,375.0
+2026-04-05,G1,PAOK - Panathinaikos,X,3.5,3.3,0.0596,93.75,True,234.38,609.38
+2026-04-05,B1,Westerlo - Charleroi,X,3.4,3.25,0.0476,152.34,False,-152.34,457.04
+2026-04-05,SP2,Almeria - Leganes,2,5.5,5.27,0.0431,114.26,False,-114.26,342.78
+2026-04-05,SP2,Las Palmas - Huesca,2,7.5,3.4,1.2045,85.69,False,-85.69,257.09
+2026-04-05,G1,Olympiakos - AEK,1,1.71,1.58,0.0802,64.27,False,-64.27,192.82
+2026-04-05,SP2,Zaragoza - Mirandes,2,4.5,4.27,0.0531,50.0,True,175.0,367.82
+2026-04-06,B1,Club Brugge - Anderlecht,2,5.75,3.83,0.4994,91.95,False,-91.95,275.87
+2026-04-06,I2,Bari - Modena,1,4.2,3.01,0.3955,68.97,True,220.7,496.57
+2026-04-06,B1,RAAL La Louviere - Dender,2,4.5,2.66,0.6891,124.14,True,434.49,931.06
+2026-04-06,E2,Bolton - Stockport,X,3.6,2.72,0.3252,232.76,True,605.18,1536.24
+2026-04-06,E2,Exeter - Doncaster,1,2.75,2.19,0.2572,384.06,True,672.11,2208.35
+2026-04-06,E2,Leyton Orient - Huddersfield,X,3.2,2.61,0.2263,552.09,False,-552.09,1656.26
+2026-04-06,E2,Northampton - Wigan,1,2.7,2.09,0.2893,414.06,False,-414.06,1242.2
+2026-04-06,E2,Reading - Lincoln,X,3.25,2.02,0.6088,310.55,False,-310.55,931.65
+2026-04-06,E2,Stevenage - Blackpool,2,4.33,2.68,0.6179,232.91,False,-232.91,698.74
+2026-04-06,E3,Barrow - Chesterfield,X,3.3,2.41,0.3688,174.69,False,-174.69,524.05
+2026-04-06,E3,Crewe - Salford,1,2.65,2.54,0.043,131.01,True,216.17,740.22
+2026-04-06,E3,Fleetwood Town - Barnet,2,2.32,2.22,0.0451,185.06,True,244.28,984.5
+2026-04-06,E3,Gillingham - Accrington,2,3.7,3.01,0.2294,246.12,False,-246.12,738.38
+2026-04-06,E3,Notts County - Newport County,2,5.75,3.02,0.9042,184.59,False,-184.59,553.79
+2026-04-06,E3,Oldham - Milton Keynes Dons,X,3.2,2.67,0.1975,138.45,True,304.59,858.38
+2026-04-06,E3,Tranmere - Colchester,1,3.4,2.21,0.5405,214.59,False,-214.59,643.79
+2026-04-06,EC,Brackley Town - Boston Utd,X,3.4,2.83,0.2006,160.95,True,386.28,1030.07
+2026-04-06,EC,Braintree Town - Woking,X,3.5,2.7,0.2963,257.52,True,643.8,1673.87
+2026-04-06,EC,Eastleigh - Yeovil,X,3.25,2.96,0.0974,418.47,False,-418.47,1255.4
+2026-04-06,EC,Gateshead - Scunthorpe,X,3.8,2.21,0.7196,313.85,False,-313.85,941.55
+2026-04-06,EC,Hartlepool - Rochdale,1,3.9,2.42,0.6097,235.39,False,-235.39,706.16
+2026-04-06,EC,Solihull - Boreham Wood,X,3.7,2.98,0.2413,176.54,False,-176.54,529.62
+2026-04-06,EC,Sutton - Southend,1,3.9,3.02,0.2916,132.41,False,-132.41,397.21
+2026-04-06,EC,Truro - Forest Green,1,4.33,3.08,0.4066,99.3,False,-99.3,297.91
+2026-04-06,EC,Wealdstone - Aldershot,1,2.15,1.9,0.1334,74.48,True,85.65,383.56
+2026-04-06,EC,York - Altrincham,2,12.0,2.91,3.1261,95.89,False,-95.89,287.67
+2026-04-06,B1,Gent - Mechelen,2,3.6,3.01,0.1961,71.92,False,-71.92,215.75
+2026-04-06,SP2,Castellon - Granada,2,5.0,3.95,0.2652,53.94,False,-53.94,161.81
+2026-04-06,T1,Kocaelispor - Buyuksehyr,X,3.3,2.8,0.1804,50.0,True,115.0,276.81
+2026-04-06,P1,Arouca - Estoril,X,3.4,2.35,0.4459,69.2,False,-69.2,207.61
+2026-04-06,SP2,Sp Gijon - Sociedad B,X,3.75,3.13,0.1976,51.9,False,-51.9,155.71
+2026-04-06,F2,Le Mans - Pau FC,2,3.5,3.01,0.1629,50.0,False,-50.0,105.71
+2026-04-06,P1,Casa Pia - Benfica,1,13.0,3.0,3.3333,50.0,False,-50.0,55.71
+2026-04-11,EC,Boreham Wood - Hartlepool,2,5.0,3.01,0.6613,50.0,False,-50.0,5.71
+2026-04-11,E3,Walsall - Cheltenham,2,5.0,2.67,0.8698,50.0,True,200.0,250.0
+2026-04-11,EC,Boston Utd - Truro,2,4.5,2.99,0.5051,62.5,False,-62.5,187.5
+2026-04-11,EC,Southend - Solihull,2,6.5,2.71,1.4006,50.0,False,-50.0,137.5
+2026-04-11,EC,Yeovil - Halifax,X,3.4,3.26,0.0428,50.0,True,120.0,257.5
+2026-04-12,B1,Mechelen - St. Gilloise,1,5.0,2.72,0.837,64.38,False,-64.38,193.12
+2026-04-12,B1,Genk - Oud-Heverlee Leuven,2,4.75,3.56,0.3343,50.0,False,-50.0,143.12
+2026-04-12,B1,Dender - Waregem,X,3.3,2.98,0.1071,50.0,False,-50.0,93.12
+2026-04-12,SP2,Santander - Almeria,2,2.82,1.75,0.6157,50.0,False,-50.0,43.12
+2026-04-13,F2,Rodez - Troyes,X,3.5,2.98,0.1742,50.0,False,-50.0,0.0
+2026-04-13,P1,Tondela - Gil Vicente,X,3.2,3.04,0.0524,50.0,True,110.0,160.0
+2026-04-16,E2,Peterboro - Port Vale,1,1.86,1.72,0.0802,50.0,False,-50.0,110.0
+2026-04-18,I2,Mantova - Avellino,2,3.5,1.84,0.9046,50.0,True,125.0,235.0
+2026-04-18,EC,Morecambe - Boreham Wood,1,5.0,4.82,0.0376,58.75,False,-58.75,176.25
+2026-04-18,SC3,Annan Athletic - Spartans,X,3.4,2.95,0.1538,50.0,False,-50.0,126.25
+2026-04-18,SP2,Zaragoza - Ceuta,2,4.5,4.37,0.0303,50.0,False,-50.0,76.25
+2026-04-18,G1,OFI Crete - Levadeiakos,X,3.3,2.96,0.114,50.0,False,-50.0,26.25
+2026-04-19,B1,Gent - St Truiden,2,2.45,2.11,0.1603,50.0,False,-50.0,0.0
+2026-04-19,D2,Braunschweig - Hertha,X,3.6,2.38,0.5143,50.0,True,130.0,180.0
+2026-04-19,SP2,Andorra - Valladolid,2,3.4,2.43,0.3984,50.0,False,-50.0,130.0
+2026-04-19,G1,AEK - PAOK,X,3.25,3.1,0.0496,50.0,False,-50.0,80.0
+2026-05-10,G1,Aris - OFI Crete,X,3.6,3.07,0.1708,50.0,False,-50.0,30.0
+2026-05-10,B1,St. Gilloise - Mechelen,X,4.5,1.94,1.3143,50.0,False,-50.0,0.0
+2026-05-11,P1,Rio Ave - Sp Lisbon,1,10.0,2.02,3.9621,50.0,False,-50.0,0.0
+2026-05-11,P1,Santa Clara - Nacional,2,3.5,1.84,0.8976,50.0,False,-50.0,0.0
+2026-05-13,G1,Volos NFC - Aris,1,4.33,4.19,0.0324,50.0,False,-50.0,0.0
+2026-05-17,N1,Sparta Rotterdam - Excelsior,1,2.05,1.68,0.222,50.0,False,-50.0,0.0
+2026-05-17,SC0,Dundee - Aberdeen,X,3.3,2.28,0.4496,50.0,False,-50.0,0.0
+2026-05-17,D2,Bielefeld - Hertha,1,1.73,1.59,0.089,50.0,True,36.5,86.5
+2026-08-01,SC2,Cove Rangers - Airdrie Utd,X,3.4,3.07,0.1086,50.0,True,120.0,206.5
+2026-08-01,SC2,East Kilbride - Queen of Sth,2,5.75,3.0,0.914,51.62,False,-51.62,154.88
+2026-08-01,SC2,Peterhead - Ross County,X,4.0,3.0,0.3333,50.0,False,-50.0,104.88
+2026-08-01,SC3,Forfar - Kelty Hearts,X,3.6,3.0,0.2,50.0,False,-50.0,54.88
+2026-08-08,SC3,Elgin - Forfar,X,3.4,1.86,0.8279,50.0,True,120.0,174.88
+2026-08-08,F2,Metz - Guingamp,X,3.4,3.28,0.036,50.0,False,-50.0,124.88
+2026-08-15,EC,Solihull - Boston Utd,X,3.5,3.22,0.0857,50.0,False,-50.0,74.88
+2026-08-15,SC3,Dumbarton - Edinburgh City,2,3.4,3.23,0.0536,50.0,True,120.0,194.88
+2026-08-15,T1,Gaziantep - Alanyaspor,X,3.4,3.27,0.0393,50.0,True,120.0,314.88
+2026-08-16,N1,Ajax - Heerenveen,2,7.0,6.72,0.0411,78.72,False,-78.72,236.16
+2026-08-16,SP2,Girona - Leganes,X,3.5,2.7,0.2959,59.04,True,147.6,383.76
+2026-08-17,SP2,Sp Gijon - Sabadell,2,5.0,2.98,0.6786,95.94,False,-95.94,287.82
+2026-08-17,T1,Samsunspor - Goztep,X,3.3,3.09,0.0691,71.95,True,165.48,453.3
+2026-08-22,E3,Crewe - Northampton,X,3.4,1.83,0.8549,113.33,False,-113.33,339.97
+2026-08-22,I2,Avellino - Arezzo,X,3.25,3.09,0.0515,84.99,False,-84.99,254.98
+2026-08-23,G1,OFI Crete - Volos NFC,2,3.6,3.0,0.2,63.74,False,-63.74,191.24
+2026-08-23,G1,PAOK - Levadeiakos,2,9.0,7.53,0.1944,50.0,False,-50.0,141.24
+2026-08-24,T1,Kocaelispor - Amedspor,X,3.6,3.34,0.0771,50.0,False,-50.0,91.24
+2026-08-24,F2,Reims - Annecy,2,4.0,2.61,0.5309,50.0,False,-50.0,41.24
+2026-08-24,SP2,Granada - Mallorca,2,2.5,2.31,0.0823,50.0,False,-50.0,0.0
+2026-08-30,T1,Eyupspor - Alanyaspor,X,3.3,2.9,0.1392,50.0,False,-50.0,0.0
+2026-08-31,EC,Harrogate - Gateshead,2,4.75,1.97,1.4108,50.0,False,-50.0,0.0
+2026-08-31,G1,Levadeiakos - Panathinaikos,1,6.25,5.75,0.0871,50.0,False,-50.0,0.0
+2026-09-05,P1,Estrela - Famalicao,X,3.2,3.09,0.0355,50.0,True,110.0,160.0
+2026-09-05,B1,Mechelen - Westerlo,X,3.5,3.36,0.0403,50.0,False,-50.0,110.0
+2026-09-05,B1,St Truiden - RAAL La Louviere,2,4.75,1.94,1.4443,50.0,False,-50.0,60.0
+2026-09-06,B1,Kortrijk - Waregem,2,2.1,1.82,0.1539,50.0,True,55.0,115.0
+2026-09-06,SC0,Hearts - Dundee,X,4.1,1.95,1.1071,50.0,False,-50.0,65.0
+2026-09-06,T1,Kasimpasa - Amedspor,1,2.1,1.64,0.2797,50.0,False,-50.0,15.0
+2026-09-06,I2,Verona - Arezzo,X,3.6,2.72,0.3247,50.0,False,-50.0,0.0
+2026-09-06,SP2,Castellon - Albacete,2,6.0,5.78,0.0377,50.0,False,-50.0,0.0
+2026-09-07,SP2,Sabadell - Cordoba,X,3.25,3.13,0.0382,50.0,False,-50.0,0.0
+2026-09-08,N1,Utrecht - Go Ahead Eagles,2,3.1,2.69,0.1544,50.0,False,-50.0,0.0
+2026-09-09,N1,Twente - Telstar,2,11.0,9.62,0.1439,50.0,False,-50.0,0.0
+2026-09-10,G1,Panathinaikos - Kifisia,2,11.0,2.06,4.3276,50.0,False,-50.0,0.0
+2026-09-10,P1,Estrela - Sp Braga,2,1.71,1.61,0.0652,50.0,False,-50.0,0.0
+2026-09-12,EC,Worthing - Barrow,X,3.6,3.37,0.0687,50.0,True,130.0,180.0
+2026-09-12,I2,Sudtirol - Modena,X,3.0,2.89,0.039,50.0,True,100.0,280.0
+2026-09-12,E2,Sheffield Weds - Wigan,2,5.25,5.09,0.0312,70.0,False,-70.0,210.0
+2026-09-12,N1,Twente - Den Haag,2,11.0,9.56,0.151,52.5,False,-52.5,157.5
+2026-09-12,G1,Iraklis - Atromitos,X,3.25,3.08,0.0564,50.0,True,112.5,270.0
+2026-09-13,N1,Zwolle - Feyenoord,1,5.75,1.97,1.9163,67.5,False,-67.5,202.5
+2026-09-13,I2,Mantova - Sampdoria,2,4.0,3.84,0.0414,50.62,False,-50.62,151.88
+2026-09-13,P1,Arouca - Santa Clara,X,3.2,3.05,0.0485,50.0,False,-50.0,101.88
+2026-09-13,T1,Amedspor - Buyuksehyr,1,2.45,1.89,0.2976,50.0,True,72.5,174.38
+2026-09-13,G1,PAOK - Aris,X,4.5,4.31,0.0431,50.0,False,-50.0,124.38
+2026-09-13,P1,Famalicao - Sp Lisbon,1,6.0,4.94,0.214,50.0,False,-50.0,74.38
+2026-09-17,SP1,Betis - Getafe,X,4.0,3.84,0.043,50.0,False,-50.0,24.38
+2026-09-19,SC2,Cove Rangers - Ross County,X,4.33,2.02,1.1419,50.0,False,-50.0,0.0
+2026-09-19,SC2,East Fife - Montrose,X,3.5,3.39,0.0327,50.0,False,-50.0,0.0
+2026-09-19,F1,Paris FC - Strasbourg,1,1.95,1.67,0.1691,50.0,True,47.5,97.5
+2026-09-19,T1,Buyuksehyr - Genclerbirligi,2,6.5,6.27,0.0373,50.0,False,-50.0,47.5
+2026-09-20,G1,OFI Crete - Asteras Tripolis,1,2.15,1.85,0.1647,50.0,False,-50.0,0.0
+2026-09-20,B1,Club Brugge - Genk,2,6.0,5.58,0.0753,50.0,False,-50.0,0.0
+2026-09-20,G1,Kalamata - Panathinaikos,1,9.5,9.05,0.0501,50.0,False,-50.0,0.0
+2026-09-20,B1,Kortrijk - Beveren,1,2.55,1.99,0.2814,50.0,True,77.5,127.5
+2026-10-03,SC3,Annan Athletic - Stirling,2,4.33,4.15,0.0433,50.0,True,166.5,294.0
+2026-10-10,SC0,Falkirk - Dundee,2,3.5,2.53,0.3819,73.5,True,183.75,477.75
+2026-10-10,SC1,Ayr - Dunfermline,X,3.2,2.28,0.4062,119.44,True,262.77,740.52
+2026-10-10,SC1,Raith Rvs - Queens Park,2,6.0,2.05,1.9198,185.13,False,-185.13,555.39
+2026-10-10,SC3,Clyde - Dumbarton,X,3.9,2.0,0.9547,138.85,False,-138.85,416.54
+2026-10-10,G1,AEK - OFI Crete,2,12.0,11.37,0.0556,104.14,False,-104.14,312.4
+2026-10-10,N1,Feyenoord - AZ Alkmaar,X,4.2,4.02,0.0449,78.1,False,-78.1,234.3
+2026-10-11,T1,Konyaspor - Buyuksehyr,1,2.55,1.76,0.4481,58.58,False,-58.58,175.72
+2026-10-11,B1,Standard - Charleroi,X,3.25,2.26,0.438,50.0,False,-50.0,125.72
+2026-10-11,B1,St. Gilloise - Oud-Heverlee Leuven,2,9.5,2.9,2.2722,50.0,False,-50.0,75.72
+2026-10-11,SP2,Almeria - Leganes,2,5.25,4.81,0.0918,50.0,False,-50.0,25.72
+2026-10-11,N1,Excelsior - Groningen,1,2.55,1.75,0.459,50.0,False,-50.0,0.0
+2026-10-11,T1,Besiktas - Kocaelispor,2,11.0,10.19,0.0798,50.0,False,-50.0,0.0
+2026-10-11,B1,Westerlo - Antwerp,2,3.0,1.96,0.5298,50.0,False,-50.0,0.0
+2026-10-11,B1,Mechelen - St Truiden,2,2.05,1.65,0.2392,50.0,False,-50.0,0.0
+2026-10-11,P1,Arouca - Estrela,2,3.5,3.13,0.1197,50.0,False,-50.0,0.0
+2026-10-12,SP2,Valladolid - Albacete,2,4.0,2.57,0.5556,50.0,False,-50.0,0.0
+2026-10-12,SP2,Burgos - Granada,2,3.0,2.7,0.1116,50.0,True,100.0,150.0
+2026-10-12,G1,PAOK - Kalamata,2,12.0,8.33,0.44,50.0,True,550.0,700.0
+2026-10-12,SP2,Oviedo - Eibar,2,3.3,2.19,0.5085,175.0,False,-175.0,525.0
+2026-10-12,F2,Dijon - Metz,X,3.2,2.59,0.2348,131.25,False,-131.25,393.75
+2026-10-12,SP2,Tenerife - Girona,1,2.75,2.48,0.1076,98.44,False,-98.44,295.31
