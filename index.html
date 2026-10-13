@@ -3,76 +3,164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>İddaa Marj Tarayıcı</title>
+<title>İddaa Değer Tarayıcı</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f6f5f1;--card:#fff;--ink:#16181d;--mute:#6b7079;--line:#e3e1da;--good:#1f8a5b;--mid:#c48a12;--bad:#c23b2e;--acc:#2b5fd9}
-@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#171a20;--ink:#e9eaee;--mute:#8b909a;--line:#262a32;--good:#3fbf86;--mid:#e0a93a;--bad:#e5584a;--acc:#6f97ff}}
+:root{--bg:#f6f5f1;--card:#fff;--ink:#16181d;--mute:#6b7079;--line:#e3e1da;--good:#1f8a5b;--mid:#c48a12;--bad:#c23b2e;--acc:#2b5fd9;--soft:#eef2fd}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#171a20;--ink:#e9eaee;--mute:#8b909a;--line:#262a32;--good:#3fbf86;--mid:#e0a93a;--bad:#e5584a;--acc:#6f97ff;--soft:#1b2234}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 'Source Sans 3',system-ui,sans-serif}
-.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 60px}
-h1{font:800 26px/1.1 Archivo,sans-serif;margin:0 0 4px}.sub{color:var(--mute);margin:0 0 18px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.wrap{max-width:1150px;margin:0 auto;padding:20px 16px 60px}
+h1{font:800 26px/1.1 Archivo,sans-serif;margin:0 0 4px}h2{font:700 17px Archivo,sans-serif;margin:22px 0 10px}
+.sub{color:var(--mute);margin:0 0 14px}
+details.help{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:14px}
+details.help summary{cursor:pointer;font-weight:600}details.help ol{margin:8px 0 2px;padding-left:20px}details.help li{margin:3px 0}
+.top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap}.tabs button{font:600 14px Archivo,sans-serif;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 12px;border-radius:8px;cursor:pointer}
+.tabs button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.kasa{margin-left:auto;display:flex;align-items:center;gap:6px}.kasa input{width:110px}
+input,select{font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
-.kpi b{display:block;font:600 22px 'IBM Plex Mono',monospace}.kpi span{color:var(--mute);font-size:13px}
-.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-.bar input,.bar select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
-.bar input{flex:1;min-width:160px}
+.kpi b{display:block;font:600 21px 'IBM Plex Mono',monospace}.kpi span{color:var(--mute);font-size:13px}
 .tbl{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:640px}
+table{width:100%;border-collapse:collapse;min-width:720px}
 th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
-th{font:600 12px Archivo,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);cursor:pointer;user-select:none}
-td.n{font-family:'IBM Plex Mono',monospace;text-align:right}th.n{text-align:right}
-.mbc{display:inline-block;min-width:22px;text-align:center;border-radius:5px;padding:1px 5px;font:600 12px 'IBM Plex Mono',monospace;background:var(--line)}
-.mbc.m1{background:var(--acc);color:#fff}
+th{font:600 12px Archivo,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--mute)}
+td.n,th.n{text-align:right}td.n{font-family:'IBM Plex Mono',monospace}
+.mbc{display:inline-block;min-width:22px;text-align:center;border-radius:5px;padding:1px 5px;font:600 12px 'IBM Plex Mono',monospace;background:var(--line)}.mbc.m1{background:var(--acc);color:#fff}
+.pick{display:inline-block;font:700 13px 'IBM Plex Mono',monospace;padding:2px 7px;border-radius:6px;background:var(--soft);color:var(--acc)}
 .g{color:var(--good)}.y{color:var(--mid)}.r{color:var(--bad)}
-.match{white-space:normal;min-width:200px}.match small{color:var(--mute)}
-.foot{color:var(--mute);font-size:13px;margin-top:14px}
-.empty{padding:30px;text-align:center;color:var(--mute)}
+.match{white-space:normal;min-width:190px}.match small{color:var(--mute);display:block}
+.foot,.note{color:var(--mute);font-size:13px;margin-top:10px}
+.empty{padding:28px;text-align:center;color:var(--mute);white-space:normal}
+.warn{background:var(--card);border-left:4px solid var(--mid);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.hide{display:none}
+svg{width:100%;height:auto;display:block}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:12px}
+.lg{display:flex;gap:14px;font-size:13px;color:var(--mute);margin:4px 4px 0}.lg i{display:inline-block;width:12px;height:3px;vertical-align:middle;margin-right:5px}
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>İddaa Marj Tarayıcı</h1>
-<p class="sub">Maç sonucu marjı = (1/oran₁ + 1/oranₓ + 1/oran₂) − 1. Düşük marj, oranların piyasaya yakın olduğu yerdir.</p>
-<div class="kpis" id="kpis"></div>
-<div class="bar">
-<input id="q" placeholder="Takım ara">
-<select id="mbc"><option value="all">Tüm MBS</option><option value="1" selected>MBS 1</option><option value="2">MBS 2</option><option value="3">MBS 3</option></select>
-<select id="win"><option value="24">24 saat</option><option value="72" selected>72 saat</option><option value="all">Hepsi</option></select>
+<h1>İddaa Değer Tarayıcı</h1>
+<p class="sub">İddaa oranını Betfair Borsası'nın marjsız (adil) oranıyla kıyaslar; İddaa oranı adil oranın en az %3 üstündeyse bahsi listeler.</p>
+
+<details class="help"><summary>Nasıl kullanılır?</summary>
+<ol>
+<li>Sağ üstteki <b>Kasam</b> kutusuna İddaa hesabındaki parayı yaz (varsayılan 50 TL). Tutarlar buna göre hesaplanır: <b>max(50 TL, kasa × %25)</b>.</li>
+<li><b>Değerli bahisler</b> sekmesindeki her satır bir öneri: <b>Yön</b> sütunundaki seçimi (1 = ev sahibi, X = beraberlik, 2 = deplasman) <b>Tutar</b> kadar <b>tek maç</b> olarak oyna. Yalnızca MBS 1 maçlar tek oynanabilir.</li>
+<li>Oynamadan önce İddaa'daki oranın tablodakiyle aynı ya da daha yüksek olduğunu kontrol et; oran düştüyse beklenen değer kaybolmuş olabilir, oynama.</li>
+<li>Maç bitince kasanı güncelle. Kasa 50 TL'nin altına düşerse kural gereği 50 TL'ye tamamlarsın.</li>
+<li><b>Takip</b> sekmesi sitenin bugüne kadar verdiği her öneriyi ve sonucunu tutar; yöntemin işe yarayıp yaramadığını orası gösterecek.</li>
+</ol>
+<div class="note">Veri her saatin 7. dakikasında yenilenir. Adil oran yalnızca football-data.co.uk'un kapsadığı ~22 Avrupa liginde (Türkiye Süper Lig dahil) var; diğer maçlar için öneri çıkmaz.</div>
+</details>
+
+<div class="top">
+<div class="tabs" id="tabs">
+<button data-t="value" class="on">Değerli bahisler</button><button data-t="all">Tüm maçlar</button><button data-t="track">Takip</button><button data-t="bt">Backtest</button>
 </div>
+<label class="kasa">Kasam <input id="kasa" type="number" min="0" step="10"> TL</label>
+</div>
+
+<section id="t-value">
+<div class="kpis" id="vk"></div>
+<div class="top"><label><input type="checkbox" id="onlym1" checked> Sadece MBS 1 (tek oynanabilir)</label></div>
 <div class="tbl"><table><thead><tr>
-<th data-k="kickoff">Saat</th><th data-k="home">Maç</th><th data-k="mbc">MBS</th>
-<th class="n" data-k="o1">1</th><th class="n" data-k="ox">X</th><th class="n" data-k="o2">2</th>
-<th class="n" data-k="m">MS marj</th><th class="n" data-k="ou">2.5 A/Ü marj</th><th class="n" data-k="kg">KG marj</th>
-</tr></thead><tbody id="rows"></tbody></table></div>
+<th>Saat</th><th>Maç</th><th>MBS</th><th>Yön</th><th class="n">İddaa oranı</th><th class="n">Adil oran</th><th class="n">Beklenen değer</th><th class="n">Tutar</th><th class="n">Kazanırsa</th><th class="n">Kaybederse</th>
+</tr></thead><tbody id="vrows"></tbody></table></div>
+</section>
+
+<section id="t-all" class="hide">
+<div class="top"><input id="q" placeholder="Takım ara"><select id="mbc"><option value="all">Tüm MBS</option><option value="1" selected>MBS 1</option></select><select id="win"><option value="24">24 saat</option><option value="72" selected>72 saat</option><option value="all">Hepsi</option></select></div>
+<div class="tbl"><table><thead><tr>
+<th>Saat</th><th>Maç</th><th>MBS</th><th class="n">1</th><th class="n">X</th><th class="n">2</th><th class="n">Adil 1</th><th class="n">Adil X</th><th class="n">Adil 2</th><th class="n">MS marj</th>
+</tr></thead><tbody id="arows"></tbody></table></div>
+</section>
+
+<section id="t-track" class="hide">
+<div class="kpis" id="tk"></div>
+<div class="tbl"><table><thead><tr>
+<th>Maç saati</th><th>Maç</th><th>Yön</th><th class="n">Oran</th><th class="n">Adil</th><th class="n">BD</th><th>Durum</th><th class="n">Tutar</th><th class="n">K/Z</th><th class="n">Kasa</th>
+</tr></thead><tbody id="trows"></tbody></table></div>
+<p class="note">Kasa kuralı simüle edilir: 50 TL ile başlar, tutar max(50, kasa×%25), kasa 50'nin altına düşerse 50'ye tamamlanır.</p>
+</section>
+
+<section id="t-bt" class="hide">
+<div class="warn" id="btwarn"></div>
+<div id="btbody"></div>
+</section>
+
 <p class="foot" id="foot">Veri yükleniyor…</p>
 </div>
 <script>
-const SRC=['https://raw.githubusercontent.com/alibingul-dev/iddaa-scanner/main/data.json','data.json'];
-let ALL=[],sortK='kickoff',sortD=1;
+const RAW='https://raw.githubusercontent.com/alibingul-dev/iddaa-scanner/main/';
+const MIN=50,FR=0.25;
+const $=id=>document.getElementById(id);
+const tl=v=>v.toLocaleString('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2})+' TL';
 const pct=v=>v==null?'–':(v*100).toFixed(1)+'%';
-const cls=v=>v==null?'':v<0.08?'g':v<0.12?'y':'r';
 const fmtT=s=>new Date(s).toLocaleString('tr-TR',{weekday:'short',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
-async function load(){for(const u of SRC){try{const r=await fetch(u+'?t='+Date.now());if(r.ok)return r.json()}catch(e){}}return null}
-function flat(e){const o=e.ms.o||[];return{...e,o1:o[0],ox:o[1],o2:o[2],m:e.ms.m,ou:e.ou25?e.ou25.m:null,kg:e.kg?e.kg.m:null}}
-function median(a){if(!a.length)return null;a=[...a].sort((x,y)=>x-y);const h=a.length>>1;return a.length%2?a[h]:(a[h-1]+a[h])/2}
-function render(){
-const q=document.getElementById('q').value.trim().toLocaleLowerCase('tr');
-const mb=document.getElementById('mbc').value,win=document.getElementById('win').value;
-const now=Date.now(),lim=win==='all'?Infinity:now+win*3600e3;
-let rows=ALL.filter(e=>(mb==='all'||String(e.mbc)===mb)&&new Date(e.kickoff).getTime()<=lim&&new Date(e.kickoff).getTime()>=now-2*3600e3&&(!q||(e.home+' '+e.away).toLocaleLowerCase('tr').includes(q)));
-rows.sort((a,b)=>{const x=a[sortK],y=b[sortK];if(x==null)return 1;if(y==null)return -1;return(x>y?1:x<y?-1:0)*sortD});
-const ms=rows.map(r=>r.m).filter(v=>v!=null);
-const best=rows.filter(r=>r.m!=null).sort((a,b)=>a.m-b.m)[0];
-document.getElementById('kpis').innerHTML=`<div class="kpi"><b>${rows.length}</b><span>Maç (filtreli)</span></div><div class="kpi"><b>${pct(median(ms))}</b><span>Medyan MS marjı</span></div><div class="kpi"><b class="${cls(best&&best.m)}">${best?pct(best.m):'–'}</b><span>En düşük marj${best?' · '+best.home:''}</span></div>`;
-document.getElementById('rows').innerHTML=rows.length?rows.map(r=>`<tr><td>${fmtT(r.kickoff)}</td><td class="match">${r.home} <small>vs</small> ${r.away}</td><td><span class="mbc ${r.mbc===1?'m1':''}">${r.mbc}</span></td><td class="n">${r.o1??'–'}</td><td class="n">${r.ox??'–'}</td><td class="n">${r.o2??'–'}</td><td class="n ${cls(r.m)}">${pct(r.m)}</td><td class="n ${cls(r.ou)}">${pct(r.ou)}</td><td class="n ${cls(r.kg)}">${pct(r.kg)}</td></tr>`).join(''):'<tr><td colspan="9" class="empty">Bu filtrede maç yok.</td></tr>';
+const PICK={'1':'1 · Ev','X':'X · Beraberlik','2':'2 · Deplasman'};
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+let kasa=parseFloat(store('kasa'))||MIN;$('kasa').value=kasa;
+const stakeFor=b=>{const k=Math.max(b,MIN);return Math.min(Math.max(MIN,k*FR),k)};
+async function j(f){for(const u of [RAW+f,f]){try{const r=await fetch(u+'?t='+Date.now());if(r.ok)return r.json()}catch(e){}}return null}
+let D=null,P=null,B=null;
+
+function renderValue(){
+  if(!D)return;
+  const now=Date.now(),m1=$('onlym1').checked;
+  const rows=D.events.filter(e=>e.value&&new Date(e.kickoff).getTime()>now&&(!m1||e.mbc===1)).sort((a,b)=>b.value.ev-a.value.ev);
+  const st=stakeFor(kasa);
+  $('vk').innerHTML=`<div class="kpi"><b>${rows.length}</b><span>Değerli bahis</span></div><div class="kpi"><b>${tl(st)}</b><span>Bahis başı tutar (kasa ${tl(Math.max(kasa,MIN))})</span></div><div class="kpi"><b>${D.matched}</b><span>Adil oranı bulunan maç</span></div>`;
+  $('vrows').innerHTML=rows.length?rows.map(e=>{const v=e.value;return `<tr><td>${fmtT(e.kickoff)}</td><td class="match">${e.home} – ${e.away}<small>${e.fair.lg} · ${e.fair.fd_home} – ${e.fair.fd_away}</small></td><td><span class="mbc ${e.mbc===1?'m1':''}">${e.mbc}</span></td><td><span class="pick">${PICK[v.pick]}</span></td><td class="n">${v.odd.toFixed(2)}</td><td class="n">${v.fair.toFixed(2)}</td><td class="n g">+${pct(v.ev)}</td><td class="n">${tl(st)}</td><td class="n g">+${tl(st*(v.odd-1))}</td><td class="n r">−${tl(st)}</td></tr>`}).join(''):'<tr><td colspan="10" class="empty">Şu an %3 üstü değer taşıyan bahis yok. Bu normal: İddaa marjı yüksek olduğu için fırsatlar seyrek çıkar.</td></tr>';
 }
-document.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sortD=sortK===k?-sortD:1;sortK=k;render()});
-['q','mbc','win'].forEach(id=>document.getElementById(id).addEventListener('input',render));
-load().then(d=>{
-if(!d||!d.events||!d.events.length){document.getElementById('foot').textContent='İlk veri bekleniyor — saatlik görev her saatin 7. dakikasında çalışır.';document.getElementById('rows').innerHTML='<tr><td colspan="9" class="empty">Henüz veri yok.</td></tr>';return}
-ALL=d.events.map(flat);render();
-document.getElementById('foot').textContent='Son güncelleme: '+new Date(d.updated).toLocaleString('tr-TR')+' · Kaynak: iddaa.com bülten akışı · Yeşil <%8, sarı %8–12, kırmızı ≥%12';
+function renderAll(){
+  if(!D)return;
+  const q=$('q').value.trim().toLocaleLowerCase('tr'),mb=$('mbc').value,win=$('win').value,now=Date.now(),lim=win==='all'?Infinity:now+win*3600e3;
+  const rows=D.events.filter(e=>{const t=new Date(e.kickoff).getTime();return t>=now-2*3600e3&&t<=lim&&(mb==='all'||e.mbc===1)&&(!q||(e.home+' '+e.away).toLocaleLowerCase('tr').includes(q))});
+  $('arows').innerHTML=rows.length?rows.map(e=>{const o=e.ms.o,f=e.fair?e.fair.odds:['–','–','–'];const c=i=>e.fair&&e.fair.ev[i]>=0.03?'g':'';return `<tr><td>${fmtT(e.kickoff)}</td><td class="match">${e.home} – ${e.away}</td><td><span class="mbc ${e.mbc===1?'m1':''}">${e.mbc}</span></td>${o.map((x,i)=>`<td class="n ${c(i)}">${x}</td>`).join('')}${f.map(x=>`<td class="n">${x}</td>`).join('')}<td class="n">${pct(e.ms.m)}</td></tr>`}).join(''):'<tr><td colspan="10" class="empty">Bu filtrede maç yok.</td></tr>';
+}
+function renderTrack(){
+  if(!P)return;
+  const list=Object.values(P).sort((a,b)=>a.kickoff.localeCompare(b.kickoff));
+  let bank=MIN,inj=MIN,n=0,w=0;
+  const rows=list.map(p=>{let st='',pnl='',bk='';
+    if(p.status!=='open'){if(bank<MIN){inj+=MIN-bank;bank=MIN}const s=stakeFor(bank);const win=p.status==='won';const x=win?s*(p.odd-1):-s;bank+=x;n++;if(win)w++;st=tl(s);pnl=`<span class="${win?'g':'r'}">${win?'+':''}${tl(x)}</span>`;bk=tl(bank)}
+    const lab=p.status==='open'?'Bekliyor':p.status==='won'?`<span class="g">Kazandı ${p.score||''}</span>`:`<span class="r">Kaybetti ${p.score||''}</span>`;
+    return `<tr><td>${fmtT(p.kickoff)}</td><td class="match">${p.home} – ${p.away}<small>MBS ${p.mbc}</small></td><td><span class="pick">${p.pick}</span></td><td class="n">${p.odd.toFixed(2)}</td><td class="n">${p.fair.toFixed(2)}</td><td class="n">${pct(p.ev)}</td><td>${lab}</td><td class="n">${st}</td><td class="n">${pnl}</td><td class="n">${bk}</td></tr>`}).reverse();
+  $('tk').innerHTML=`<div class="kpi"><b>${list.length}</b><span>Toplam öneri</span></div><div class="kpi"><b>${n?w+'/'+n:'–'}</b><span>Sonuçlanan (kazanan/toplam)</span></div><div class="kpi"><b>${tl(bank)}</b><span>Simüle kasa</span></div><div class="kpi"><b class="${bank-inj>=0?'g':'r'}">${tl(bank-inj)}</b><span>Net (kasa − yatırılan ${tl(inj)})</span></div>`;
+  $('trows').innerHTML=rows.length?rows.join(''):'<tr><td colspan="10" class="empty">Henüz öneri kaydı yok; ilk değerli bahis çıktığında burada görünecek.</td></tr>';
+}
+function curveSvg(c){
+  if(!c||c.length<2)return'';
+  const W=1000,H=260,pad=40,ys=c.flatMap(x=>[x[1],x[2]]),mx=Math.max(...ys,MIN)*1.05,n=c.length;
+  const X=i=>pad+(W-pad*2)*i/(n-1),Y=v=>H-pad-(H-pad*2)*v/mx;
+  const line=k=>c.map((x,i)=>(i?'L':'M')+X(i).toFixed(1)+','+Y(x[k]).toFixed(1)).join('');
+  const ticks=[0,.25,.5,.75,1].map(t=>{const v=mx*t;return `<line x1="${pad}" x2="${W-pad}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--line)"/><text x="${pad-6}" y="${Y(v)+4}" font-size="12" text-anchor="end" fill="var(--mute)">${Math.round(v)}</text>`}).join('');
+  return `<div class="chart"><svg viewBox="0 0 ${W} ${H}">${ticks}<path d="${line(2)}" fill="none" stroke="var(--bad)" stroke-width="2" stroke-dasharray="5 4"/><path d="${line(1)}" fill="none" stroke="var(--acc)" stroke-width="2"/><text x="${pad}" y="${H-12}" font-size="12" fill="var(--mute)">${c[0][0]}</text><text x="${W-pad}" y="${H-12}" font-size="12" text-anchor="end" fill="var(--mute)">${c[n-1][0]}</text></svg><div class="lg"><span><i style="background:var(--acc)"></i>Kasa</span><span><i style="background:var(--bad)"></i>Toplam yatırılan para</span></div></div>`;
+}
+function renderBt(){
+  if(!B){$('btwarn').textContent='Backtest verisi yüklenemedi.';return}
+  $('btwarn').innerHTML=`<b>Bu bir vekil backtest.</b> Geçmiş İddaa oranlarını tutan erişilebilir bir arşiv yok. İddaa yerine Bet365 açılış oranları, adil oran olarak Pinnacle (${B.fair_sources.PS} maç) ve Betfair Borsası (${B.fair_sources.BFE} maç) açılış oranları kullanıldı. Dönem ${B.rules.start} – bugün, ${B.matches} maç. Eşik: beklenen değer ≥ %${B.rules.edge*100}.`;
+  $('btbody').innerHTML=B.scenarios.map(s=>`<h2>${s.label}</h2><div class="kpis">
+<div class="kpi"><b>${s.bets}</b><span>Bahis (${s.wins} kazanan, %${(100*(s.hit_rate||0)).toFixed(1)})</span></div>
+<div class="kpi"><b>${s.avg_odd??'–'}</b><span>Ortalama oran</span></div>
+<div class="kpi"><b class="${(s.roi_flat||0)>=0?'g':'r'}">${pct(s.roi_flat)}</b><span>Sabit tutarla getiri</span></div>
+<div class="kpi"><b>${tl(s.injected)}</b><span>Toplam yatırılan (${s.busts} kez sıfırlandı)</span></div>
+<div class="kpi"><b>${tl(s.final_bank)}</b><span>Son kasa (zirve ${tl(s.peak_bank)})</span></div>
+<div class="kpi"><b class="${s.net>=0?'g':'r'}">${tl(s.net)}</b><span>Net sonuç</span></div></div>${curveSvg(s.curve)}`).join('');
+}
+function show(t){document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));['value','all','track','bt'].forEach(x=>$('t-'+x).classList.toggle('hide',x!==t));store('tab',t)}
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>show(b.dataset.t));
+$('kasa').addEventListener('input',()=>{kasa=parseFloat($('kasa').value)||0;store('kasa',kasa);renderValue()});
+$('onlym1').addEventListener('change',renderValue);['q','mbc','win'].forEach(id=>$(id).addEventListener('input',renderAll));
+show(store('tab')||'value');
+Promise.all([j('data.json'),j('picks.json'),j('backtest.json')]).then(([d,p,b])=>{
+  D=d;P=p||{};B=b;
+  if(!D||!D.events){$('foot').textContent='Veri yüklenemedi.';return}
+  renderValue();renderAll();renderTrack();renderBt();
+  $('foot').textContent=`Son güncelleme: ${new Date(D.updated).toLocaleString('tr-TR')} · ${D.count} maç, ${D.matched} tanesi adil oranla eşleşti · Kaynaklar: iddaa.com bülteni, football-data.co.uk`;
 });
 </script>
 </body>
