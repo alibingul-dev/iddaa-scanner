@@ -18,6 +18,7 @@ FRACTION = 0.25
 EDGE = 0.03
 START = dt.date(2026, 1, 1)
 IDDAA_MARGIN = 0.13
+MAX_DEV = 0.08
 LEAGUES = ["E0", "E1", "E2", "E3", "EC", "SC0", "SC1", "SC2", "SC3", "D1", "D2", "I1", "I2",
            "SP1", "SP2", "F1", "F2", "N1", "B1", "P1", "T1", "G1"]
 SEASONS = ["2526", "2627"]
@@ -47,6 +48,9 @@ def parse_date(s):
     return None
 
 
+dropped = {"overround": 0, "deviation": 0}
+
+
 def load():
     rows = []
     for season in SEASONS:
@@ -64,7 +68,15 @@ def load():
                 if None in fo:
                     fair_src, fo = "BFE", [f(r.get("BFEH")), f(r.get("BFED")), f(r.get("BFEA"))]
                 bo = [f(r.get("B365H")), f(r.get("B365D")), f(r.get("B365A"))]
-                if None in fo or None in bo:
+                ao = [f(r.get("AvgH")), f(r.get("AvgD")), f(r.get("AvgA"))]
+                if None in fo or None in bo or None in ao:
+                    continue
+                over = sum(1 / o for o in fo)
+                if not 0.97 <= over <= 1.10:
+                    dropped["overround"] += 1
+                    continue
+                if max(abs(a - b) for a, b in zip(devig(fo), devig(ao))) > MAX_DEV:
+                    dropped["deviation"] += 1
                     continue
                 rows.append({
                     "date": d.isoformat(), "time": r.get("Time") or "", "lg": lg,
@@ -137,8 +149,9 @@ def main():
     res = {
         "generated": dt.datetime.now(dt.timezone.utc).isoformat(),
         "rules": {"min_stake": MIN_STAKE, "fraction": FRACTION, "edge": EDGE, "start": START.isoformat(),
-                  "iddaa_margin": IDDAA_MARGIN},
+                  "iddaa_margin": IDDAA_MARGIN, "max_dev": MAX_DEV},
         "matches": len(rows),
+        "dropped": dropped,
         "fair_sources": {s: sum(1 for r in rows if r["fair_src"] == s) for s in ("PS", "BFE")},
         "scenarios": [
             simulate(rows, lambda b: b, "Bet365 açılış (iyimser vekil)"),
