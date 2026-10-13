@@ -232,14 +232,18 @@ function curveSvg(c){
 }
 function renderBt(){
   if(!B){$('btwarn').textContent='Backtest verisi yüklenemedi.';return}
-  $('btwarn').innerHTML=`<b>Vekil backtest.</b> Geçmiş İddaa oranı arşivi yok; İddaa yerine Bet365 açılış oranı, adil oran olarak Pinnacle (${B.fair_sources.PS}) ve Betfair Borsası (${B.fair_sources.BFE}) açılış oranı kullanıldı. ${B.rules.start} – bugün, ${B.matches} maç, eşik %${B.rules.edge*100}.`;
-  $('btbody').innerHTML=B.scenarios.map(s=>`<h2>${esc(s.label)}</h2><div class="kpis">
+  const R=B.rules,cls=v=>v==null?'':v>=0?'g':'r';
+  $('btwarn').innerHTML=`<b>Vekil backtest.</b> Geçmiş İddaa oranı arşivi yok; İddaa yerine Bet365 açılış oranı, adil oran olarak Pinnacle (${B.fair_sources.PS} maç) ve Betfair Borsası (${B.fair_sources.BFE} maç) açılış oranı kullanıldı. Toplam ${B.matches} maç. Parametreler <b>${R.start} – ${R.split}</b> (eğitim, ${B.matches_train} maç) döneminde seçildi, <b>${R.split} – bugün</b> (test, ${B.matches_test} maç) döneminde değiştirilmeden sınandı. Aşağıdaki sonuçlar yalnızca test dönemi.`;
+  const grid=B.grid?`<h2>Tüm denenen ayarlar</h2><div class="tbl" style="max-height:none"><table><thead><tr><th>Fiyat</th><th class="n">Eşik</th><th class="n">Oran sınırı</th><th class="n">Eğitim bahis</th><th class="n">Eğitim getiri</th><th class="n">Test bahis</th><th class="n">Test getiri</th><th class="n">t</th><th class="n">Kapanışa göre değer</th></tr></thead><tbody>${B.grid.map(g=>`<tr><td>${g.price==='iddaa'?'İddaa vekili':'Bet365'}</td><td class="n">%${g.edge*100}</td><td class="n">${g.cap?'≤ '+g.cap.toFixed(2):'yok'}</td><td class="n">${g.train.n}</td><td class="n ${cls(g.train.roi)}">${pct(g.train.roi)}</td><td class="n">${g.test.n}</td><td class="n ${cls(g.test.roi)}">${pct(g.test.roi)}</td><td class="n">${g.test.t??'–'}</td><td class="n ${cls(g.test.clv)}">${pct(g.test.clv)}</td></tr>`).join('')}</tbody></table></div>
+<div class="cards">${B.grid.map(g=>`<div class="card"><div class="top"><span>${g.price==='iddaa'?'İddaa vekili':'Bet365'} · eşik %${g.edge*100} · ${g.cap?'oran ≤ '+g.cap.toFixed(2):'sınırsız'}</span></div><div class="trio"><div><span>Eğitim</span><b class="${cls(g.train.roi)}">${pct(g.train.roi)}</b></div><div><span>Test</span><b class="${cls(g.test.roi)}">${pct(g.test.roi)}</b></div><div><span>Test bahis</span><b>${g.test.n}</b></div></div></div>`).join('')}</div>
+<p class="note">Getiri = her bahse 1 birim yatırılırsa birim başına kâr. t ≥ 2 ise sonuç büyük ihtimalle şans değil. Kapanışa göre değer pozitifse fiyat, maç başlarken piyasanın vardığı adil oranı yenmiş demektir.</p>`:'';
+  $('btbody').innerHTML=`<h2>Eğitimde en iyi ayar, test döneminde</h2>`+B.scenarios.map(s=>`<h2 style="font-size:15px">${esc(s.label)}</h2><div class="kpis">
 <div class="kpi"><b>${s.bets}</b><span>Bahis (${s.wins} tuttu)</span></div>
-<div class="kpi"><b class="${(s.roi_flat||0)>=0?'g':'r'}">${pct(s.roi_flat)}</b><span>Sabit tutarla getiri</span></div>
+<div class="kpi"><b class="${cls(s.roi_flat)}">${pct(s.roi_flat)}</b><span>Sabit tutarla getiri${s.t!=null?' · t '+s.t:''}</span></div>
 <div class="kpi"><b>${tl0(s.injected)}</b><span>Yatırılan (${s.busts} sıfırlama)</span></div>
-<div class="kpi"><b class="${s.net>=0?'g':'r'}">${tl0(s.net)}</b><span>Net sonuç</span></div>
-<div class="kpi hideM"><b>${s.avg_odd??'–'}</b><span>Ortalama oran</span></div>
-<div class="kpi hideM"><b>${tl0(s.peak_bank)}</b><span>Zirve kasa</span></div></div>${curveSvg(s.curve)}`).join('');
+<div class="kpi"><b class="${cls(s.net)}">${tl0(s.net)}</b><span>Net sonuç</span></div>
+<div class="kpi hideM"><b class="${cls(s.train_roi)}">${pct(s.train_roi)}</b><span>Eğitim getirisi (${s.train_n} bahis)</span></div>
+<div class="kpi hideM"><b class="${cls(s.clv)}">${pct(s.clv)}</b><span>Kapanışa göre değer</span></div></div>${curveSvg(s.curve)}`).join('')+grid;
 }
 
 function show(t){
