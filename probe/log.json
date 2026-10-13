@@ -1,0 +1,34 @@
+[
+ {
+  "url": "https://goapi.mackolik.com/livedata?date=15/03/2026",
+  "error": "URLError(gaierror(-2, 'Name or service not known'))"
+ },
+ {
+  "url": "http://goapi.mackolik.com/livedata?date=15/03/2026",
+  "error": "URLError(gaierror(-2, 'Name or service not known'))"
+ },
+ {
+  "url": "https://www.football-data.co.uk/mmz4281/2526/E0.csv",
+  "status": 200,
+  "len": 203438
+ },
+ {
+  "url": "https://www.football-data.co.uk/mmz4281/2526/T1.csv",
+  "status": 200,
+  "len": 158392
+ },
+ {
+  "url": "https://www.football-data.co.uk/mmz4281/2627/E0.csv",
+  "status": 200,
+  "len": 29659
+ },
+ {
+  "url": "https://www.football-data.co.uk/fixtures.csv",
+  "status": 200,
+  "len": 4582
+ },
+ {
+  "url": "https://goapi.mackolik.com/livedata?date=15/03/2026",
+  "error": "URLError(gaierror(-2, 'Name or service not known'))"
+ }
+]
