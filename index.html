@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>İddaa Marj Tarayıcı</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--ink:#16181d;--mute:#6b7079;--line:#e3e1da;--good:#1f8a5b;--mid:#c48a12;--bad:#c23b2e;--acc:#2b5fd9}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#171a20;--ink:#e9eaee;--mute:#8b909a;--line:#262a32;--good:#3fbf86;--mid:#e0a93a;--bad:#e5584a;--acc:#6f97ff}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 'Source Sans 3',system-ui,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 60px}
+h1{font:800 26px/1.1 Archivo,sans-serif;margin:0 0 4px}.sub{color:var(--mute);margin:0 0 18px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+.kpi b{display:block;font:600 22px 'IBM Plex Mono',monospace}.kpi span{color:var(--mute);font-size:13px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.bar input,.bar select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.bar input{flex:1;min-width:160px}
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:640px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{font:600 12px Archivo,sans-serif;text-transform:uppercase;letter-spacing:.04em;color:var(--mute);cursor:pointer;user-select:none}
+td.n{font-family:'IBM Plex Mono',monospace;text-align:right}th.n{text-align:right}
+.mbc{display:inline-block;min-width:22px;text-align:center;border-radius:5px;padding:1px 5px;font:600 12px 'IBM Plex Mono',monospace;background:var(--line)}
+.mbc.m1{background:var(--acc);color:#fff}
+.g{color:var(--good)}.y{color:var(--mid)}.r{color:var(--bad)}
+.match{white-space:normal;min-width:200px}.match small{color:var(--mute)}
+.foot{color:var(--mute);font-size:13px;margin-top:14px}
+.empty{padding:30px;text-align:center;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>İddaa Marj Tarayıcı</h1>
+<p class="sub">Maç sonucu marjı = (1/oran₁ + 1/oranₓ + 1/oran₂) − 1. Düşük marj, oranların piyasaya yakın olduğu yerdir.</p>
+<div class="kpis" id="kpis"></div>
+<div class="bar">
+<input id="q" placeholder="Takım ara">
+<select id="mbc"><option value="all">Tüm MBS</option><option value="1" selected>MBS 1</option><option value="2">MBS 2</option><option value="3">MBS 3</option></select>
+<select id="win"><option value="24">24 saat</option><option value="72" selected>72 saat</option><option value="all">Hepsi</option></select>
+</div>
+<div class="tbl"><table><thead><tr>
+<th data-k="kickoff">Saat</th><th data-k="home">Maç</th><th data-k="mbc">MBS</th>
+<th class="n" data-k="o1">1</th><th class="n" data-k="ox">X</th><th class="n" data-k="o2">2</th>
+<th class="n" data-k="m">MS marj</th><th class="n" data-k="ou">2.5 A/Ü marj</th><th class="n" data-k="kg">KG marj</th>
+</tr></thead><tbody id="rows"></tbody></table></div>
+<p class="foot" id="foot">Veri yükleniyor…</p>
+</div>
+<script>
+const SRC=['https://raw.githubusercontent.com/alibingul-dev/iddaa-scanner/main/data.json','data.json'];
+let ALL=[],sortK='kickoff',sortD=1;
+const pct=v=>v==null?'–':(v*100).toFixed(1)+'%';
+const cls=v=>v==null?'':v<0.08?'g':v<0.12?'y':'r';
+const fmtT=s=>new Date(s).toLocaleString('tr-TR',{weekday:'short',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
+async function load(){for(const u of SRC){try{const r=await fetch(u+'?t='+Date.now());if(r.ok)return r.json()}catch(e){}}return null}
+function flat(e){const o=e.ms.o||[];return{...e,o1:o[0],ox:o[1],o2:o[2],m:e.ms.m,ou:e.ou25?e.ou25.m:null,kg:e.kg?e.kg.m:null}}
+function median(a){if(!a.length)return null;a=[...a].sort((x,y)=>x-y);const h=a.length>>1;return a.length%2?a[h]:(a[h-1]+a[h])/2}
+function render(){
+const q=document.getElementById('q').value.trim().toLocaleLowerCase('tr');
+const mb=document.getElementById('mbc').value,win=document.getElementById('win').value;
+const now=Date.now(),lim=win==='all'?Infinity:now+win*3600e3;
+let rows=ALL.filter(e=>(mb==='all'||String(e.mbc)===mb)&&new Date(e.kickoff).getTime()<=lim&&new Date(e.kickoff).getTime()>=now-2*3600e3&&(!q||(e.home+' '+e.away).toLocaleLowerCase('tr').includes(q)));
+rows.sort((a,b)=>{const x=a[sortK],y=b[sortK];if(x==null)return 1;if(y==null)return -1;return(x>y?1:x<y?-1:0)*sortD});
+const ms=rows.map(r=>r.m).filter(v=>v!=null);
+const best=rows.filter(r=>r.m!=null).sort((a,b)=>a.m-b.m)[0];
+document.getElementById('kpis').innerHTML=`<div class="kpi"><b>${rows.length}</b><span>Maç (filtreli)</span></div><div class="kpi"><b>${pct(median(ms))}</b><span>Medyan MS marjı</span></div><div class="kpi"><b class="${cls(best&&best.m)}">${best?pct(best.m):'–'}</b><span>En düşük marj${best?' · '+best.home:''}</span></div>`;
+document.getElementById('rows').innerHTML=rows.length?rows.map(r=>`<tr><td>${fmtT(r.kickoff)}</td><td class="match">${r.home} <small>vs</small> ${r.away}</td><td><span class="mbc ${r.mbc===1?'m1':''}">${r.mbc}</span></td><td class="n">${r.o1??'–'}</td><td class="n">${r.ox??'–'}</td><td class="n">${r.o2??'–'}</td><td class="n ${cls(r.m)}">${pct(r.m)}</td><td class="n ${cls(r.ou)}">${pct(r.ou)}</td><td class="n ${cls(r.kg)}">${pct(r.kg)}</td></tr>`).join(''):'<tr><td colspan="9" class="empty">Bu filtrede maç yok.</td></tr>';
+}
+document.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;sortD=sortK===k?-sortD:1;sortK=k;render()});
+['q','mbc','win'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+load().then(d=>{
+if(!d||!d.events||!d.events.length){document.getElementById('foot').textContent='İlk veri bekleniyor — saatlik görev her saatin 7. dakikasında çalışır.';document.getElementById('rows').innerHTML='<tr><td colspan="9" class="empty">Henüz veri yok.</td></tr>';return}
+ALL=d.events.map(flat);render();
+document.getElementById('foot').textContent='Son güncelleme: '+new Date(d.updated).toLocaleString('tr-TR')+' · Kaynak: iddaa.com bülten akışı · Yeşil <%8, sarı %8–12, kırmızı ≥%12';
+});
+</script>
+</body>
+</html>
