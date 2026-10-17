@@ -101,6 +101,88 @@ svg{width:100%;height:auto;display:block}
 </style>
 </head>
 <body>
+<!-- ===== SITE INTRO (iddaa) ===== -->
+<div id="ab-intro" aria-hidden="true">
+  <svg class="ab-grid" viewBox="0 0 600 210" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <linearGradient id="abBeam" x1="0" x2="1">
+        <stop offset="0" stop-color="#6f97ff" stop-opacity="0"/>
+        <stop offset=".8" stop-color="#6f97ff" stop-opacity=".35"/>
+        <stop offset="1" stop-color="#a9c0ff" stop-opacity=".9"/>
+      </linearGradient>
+    </defs>
+    <g class="ab-cells"></g>
+    <rect class="ab-beam" x="-70" y="10" width="70" height="190" fill="url(#abBeam)"/>
+  </svg>
+  <div class="ab-title">
+    <span>İ</span><span>D</span><span>D</span><span>A</span><span>A</span><span class="sp"></span><span class="g">D</span><span class="g">E</span><span class="g">Ğ</span><span class="g">E</span><span class="g">R</span>
+  </div>
+  <div class="ab-sub">Oranları tarar, değeri işaretler.</div>
+  <div class="ab-by">Hazırlayan: Ali Bingül</div>
+  <button class="ab-skip" type="button">Geç ›</button>
+</div>
+
+<style>
+#ab-intro{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at 50% 40%,#1b2234 0%,#0f1115 70%);color:#e9eaee;
+  font-family:'Source Sans 3',system-ui,sans-serif;overflow:hidden;animation:abOut .7s ease-in 5s forwards}
+#ab-intro .ab-grid{width:min(90vw,600px);height:auto;margin-bottom:2vh}
+#ab-intro .ab-cell rect{fill:#171a20;stroke:#262a32;stroke-width:1.5;transition:none}
+#ab-intro .ab-cell text{fill:#8b909a;font:600 17px 'IBM Plex Mono',monospace;text-anchor:middle;dominant-baseline:central}
+#ab-intro .ab-cell{opacity:0;animation:abFade .35s ease-out forwards}
+#ab-intro .ab-cell.v rect{animation:abHitR .35s ease-out forwards;animation-delay:inherit}
+#ab-intro .ab-cell.v text{animation:abHitT .35s ease-out forwards;animation-delay:inherit}
+#ab-intro .ab-beam{animation:abScan 1.7s cubic-bezier(.45,0,.55,1) .5s forwards;opacity:0}
+#ab-intro .ab-title{display:flex;font:800 clamp(38px,8vw,78px)/1.05 Archivo,system-ui,sans-serif;letter-spacing:.02em}
+#ab-intro .ab-title span{display:inline-block;opacity:0;transform:translateY(20px);animation:abLetter .45s cubic-bezier(.2,.8,.2,1) forwards}
+#ab-intro .ab-title .g{color:#3fbf86}
+#ab-intro .ab-title .sp{width:.3em}
+#ab-intro .ab-sub{margin-top:12px;font-size:clamp(14px,1.8vw,18px);color:#8b909a;opacity:0;animation:abFade .6s ease-out 2.9s forwards}
+#ab-intro .ab-by{margin-top:10px;font:600 clamp(11px,1.2vw,13px) 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#5d626c;
+  opacity:0;animation:abFade .5s ease-out 3.1s forwards}
+#ab-intro .ab-skip{position:absolute;bottom:22px;right:24px;background:none;border:1px solid #262a32;color:#8b909a;
+  font:inherit;font-size:13px;padding:6px 14px;border-radius:999px;cursor:pointer}
+#ab-intro .ab-skip:hover{color:#e9eaee;border-color:#8b909a}
+#ab-intro.ab-done{animation:abOut .35s ease-in forwards}
+@keyframes abScan{0%{opacity:1;transform:translateX(0)}90%{opacity:1}100%{opacity:0;transform:translateX(680px)}}
+@keyframes abHitR{to{fill:#123326;stroke:#3fbf86}}
+@keyframes abHitT{to{fill:#3fbf86}}
+@keyframes abFade{to{opacity:1}}
+@keyframes abLetter{to{opacity:1;transform:none}}
+@keyframes abOut{to{opacity:0;transform:scale(1.03);visibility:hidden}}
+@media (prefers-reduced-motion:reduce){#ab-intro{display:none!important}}
+</style>
+
+<script>
+(function(){
+  var el=document.getElementById('ab-intro'); if(!el) return;
+  var K='abIntro:iddaa', seen=false;
+  try{seen=sessionStorage.getItem(K)==='1';}catch(e){}
+  if(seen){el.remove();return;}
+  try{sessionStorage.setItem(K,'1');}catch(e){}
+  var odds=['1.85','3.40','4.20','2.10','3.25','3.60','1.62','3.90','5.50','2.45','3.10','2.95','1.95','3.55','4.10','2.70','3.20','2.60'];
+  var hit={3:1,8:1,14:1}, g=el.querySelector('.ab-cells'), ns='http://www.w3.org/2000/svg';
+  odds.forEach(function(o,i){
+    var c=i%6, r=Math.floor(i/6), x=30+c*92, y=14+r*64;
+    var grp=document.createElementNS(ns,'g'); grp.setAttribute('class','ab-cell'+(hit[i]?' v':''));
+    var rc=document.createElementNS(ns,'rect'); rc.setAttribute('x',x); rc.setAttribute('y',y);
+    rc.setAttribute('width',80); rc.setAttribute('height',50); rc.setAttribute('rx',8);
+    var tx=document.createElementNS(ns,'text'); tx.setAttribute('x',x+40); tx.setAttribute('y',y+25); tx.textContent=o;
+    grp.appendChild(rc); grp.appendChild(tx); g.appendChild(grp);
+    grp.style.animationDelay=(0.05+i*0.025)+'s';
+    if(hit[i]){var d=(0.5+1.7*((x+80)/680)).toFixed(2)+'s'; rc.style.animationDelay=d; tx.style.animationDelay=d;}
+  });
+  el.querySelectorAll('.ab-title span').forEach(function(s,i){s.style.animationDelay=(2.1+i*0.05)+'s';});
+  var root=document.documentElement; root.style.overflow='hidden';
+  function bye(){if(!el.isConnected)return;el.remove();root.style.overflow='';}
+  function done(){if(!el.isConnected)return;el.classList.add('ab-done');setTimeout(bye,380);}
+  el.querySelector('.ab-skip').addEventListener('click',done);
+  el.addEventListener('animationend',function(e){if(e.target===el)bye();});
+  setTimeout(done,6000);
+})();
+</script>
+<!-- ===== /SITE INTRO ===== -->
+
 <header>
   <div class="hbar">
     <h1>İddaa Değer</h1>
