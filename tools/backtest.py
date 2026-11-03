@@ -5,6 +5,9 @@
   indirgenmiş hali (İddaa vekili).
 - Adil oran: Pinnacle açılış (yoksa Betfair Borsası açılış), marjı çarpımsal yöntemle sökülmüş.
 - Kapanış değeri (CLV): bahis fiyatının Pinnacle kapanış adil oranına göre farkı.
+- "stale" (geç bahis) senaryosu: İddaa fiyatı açılışta sabit kalmış sayılır, adil oran Pinnacle KAPANIŞ.
+  Yani maça yakın, keskin piyasa hareket ettikten sonra İddaa'nın geride kalan oranına oynamak.
+  Üst sınırdır: İddaa oranları da kısmen hareket ediyor; gerçek getiri "iddaa" ile "stale" arasındadır.
 
 Parametreler 2019-07..2023-06 (eğitim) döneminde seçilir, 2023-07..bugün (test) döneminde
 değiştirilmeden sınanır.
@@ -22,7 +25,7 @@ import os
 import urllib.request
 
 MIN_STAKE = 50.0
-IDDAA_MARGIN = 0.13
+IDDAA_MARGIN = 0.14  # 2026-11 canlı ölçüm: tekli oynanabilir maçlarda medyan marj %14
 MAX_DEV = 0.08
 START = dt.date(2019, 7, 1)
 SPLIT = dt.date(2023, 7, 1)
@@ -30,7 +33,7 @@ LEAGUES = ["E0", "E1", "E2", "E3", "EC", "SC0", "SC1", "SC2", "SC3", "D1", "D2",
            "SP1", "SP2", "F1", "F2", "N1", "B1", "P1", "T1", "G1"]
 SEASONS = ["1920", "2021", "2122", "2223", "2324", "2425", "2526", "2627"]
 EDGES = [0.03, 0.05]
-CAPS = [None, 4.0]
+CAPS = [None, 4.0, 3.0]
 H = {"User-Agent": "Mozilla/5.0"}
 
 
@@ -116,17 +119,20 @@ def load():
     return rows
 
 
-def pick_bets(rows, price_fn, edge, cap):
+def pick_bets(rows, price_fn, edge, cap, fair_key="p"):
     bets = []
     for r in rows:
+        fair = r[fair_key]
+        if fair is None:
+            continue
         price = price_fn(r["book"])
-        evs = [price[i] * r["p"][i] - 1 for i in range(3)]
+        evs = [price[i] * fair[i] - 1 for i in range(3)]
         i = max(range(3), key=lambda k: evs[k])
         if evs[i] < edge or (cap and price[i] > cap):
             continue
         clv = price[i] * r["pc"][i] - 1 if r["pc"] else None
         bets.append({"date": r["date"], "lg": r["lg"], "match": f'{r["home"]} - {r["away"]}', "pick": "1X2"[i],
-                     "odd": price[i], "fair": round(1 / r["p"][i], 2), "ev": round(evs[i], 4),
+                     "odd": price[i], "fair": round(1 / fair[i], 2), "ev": round(evs[i], 4),
                      "clv": None if clv is None else round(clv, 4), "win": r["res"] == i})
     return bets
 
@@ -170,12 +176,14 @@ def bank_sim(bets, rule):
 def main():
     rows = load()
     split = SPLIT.isoformat()
-    prices = {"iddaa": ("İddaa marjına indirgenmiş (%13)", to_iddaa), "b365": ("Bet365 açılış (iyimser vekil)", lambda b: b)}
+    prices = {"iddaa": ("İddaa vekili (%14 marj) · açılışa göre", to_iddaa, "p"),
+              "b365": ("Bet365 açılış (iyimser vekil) · açılışa göre", lambda b: b, "p"),
+              "stale": ("İddaa vekili (%14 marj) · geç bahis, Pinnacle kapanışa göre", to_iddaa, "pc")}
     grid = []
-    for pk, (plabel, fn) in prices.items():
+    for pk, (plabel, fn, fk) in prices.items():
         for edge in EDGES:
             for cap in CAPS:
-                bets = pick_bets(rows, fn, edge, cap)
+                bets = pick_bets(rows, fn, edge, cap, fk)
                 tr = [b for b in bets if b["date"] < split]
                 te = [b for b in bets if b["date"] >= split]
                 grid.append({"price": pk, "price_label": plabel, "edge": edge, "cap": cap,
@@ -186,12 +194,12 @@ def main():
     # Her fiyat kaynağı için eğitimde en iyi yapı seçilir, test döneminde sınanır.
     scenarios = []
     os.makedirs("backtest", exist_ok=True)
-    for pk, (plabel, fn) in prices.items():
+    for pk, (plabel, fn, fk) in prices.items():
         cands = [g for g in grid if g["price"] == pk and g["train"].get("n", 0) >= 50]
         best = max(cands, key=lambda g: g["train"]["roi"]) if cands else None
         if not best:
             continue
-        bets = pick_bets(rows, fn, best["edge"], best["cap"])
+        bets = pick_bets(rows, fn, best["edge"], best["cap"], fk)
         te = [b for b in bets if b["date"] >= split]
         for rule in ("ali", "k2"):
             sim = bank_sim(te, rule)
@@ -212,7 +220,8 @@ def main():
     res = {
         "generated": dt.datetime.now(dt.timezone.utc).isoformat(),
         "rules": {"start": START.isoformat(), "split": split, "edges": EDGES, "caps": CAPS,
-                  "iddaa_margin": IDDAA_MARGIN, "max_dev": MAX_DEV, "edge": min(EDGES)},
+                  "iddaa_margin": IDDAA_MARGIN, "max_dev": MAX_DEV, "edge": min(EDGES),
+                  "price_labels": {k: v[0] for k, v in prices.items()}},
         "matches": len(rows),
         "matches_train": sum(r["date"] < split for r in rows),
         "matches_test": sum(r["date"] >= split for r in rows),
