@@ -1,1 +1,18 @@
-{}
+{
+"3278613-1": {
+"first_seen": "2026-11-08T15:01:42.969390+00:00",
+"id": 3278613,
+"home": "Le Mans",
+"away": "Monaco",
+"kickoff": "2026-11-08T16:15:00+00:00",
+"mbc": 1,
+"lg": "F1",
+"fd_home": "Le Mans",
+"fd_away": "Monaco",
+"pick": "1",
+"odd": 5.25,
+"fair": 4.67,
+"ev": 0.1252,
+"status": "open"
+}
+}
