@@ -13,6 +13,8 @@
 "odd": 5.25,
 "fair": 4.67,
 "ev": 0.1252,
-"status": "open"
+"status": "lost",
+"result": "X",
+"score": "1-1"
 }
 }
