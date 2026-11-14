@@ -16,5 +16,37 @@
 "status": "lost",
 "result": "X",
 "score": "1-1"
+},
+"3299057-2": {
+"first_seen": "2026-11-14T16:58:50.492242+00:00",
+"id": 3299057,
+"home": "Mallorca",
+"away": "Cordoba",
+"kickoff": "2026-11-14T17:30:00+00:00",
+"mbc": 1,
+"lg": "SP2",
+"fd_home": "Mallorca",
+"fd_away": "Cordoba",
+"pick": "2",
+"odd": 4.07,
+"fair": 3.9,
+"ev": 0.0437,
+"status": "open"
+},
+"3299136-1": {
+"first_seen": "2026-11-14T16:58:50.492242+00:00",
+"id": 3299136,
+"home": "Granada",
+"away": "Las Palmas",
+"kickoff": "2026-11-15T15:15:00+00:00",
+"mbc": 1,
+"lg": "SP2",
+"fd_home": "Granada",
+"fd_away": "Las Palmas",
+"pick": "1",
+"odd": 1.96,
+"fair": 1.89,
+"ev": 0.0353,
+"status": "open"
 }
 }
