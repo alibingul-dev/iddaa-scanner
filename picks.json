@@ -31,7 +31,9 @@
 "odd": 4.07,
 "fair": 3.9,
 "ev": 0.0437,
-"status": "open"
+"status": "lost",
+"result": "X",
+"score": "3-3"
 },
 "3299136-1": {
 "first_seen": "2026-11-14T16:58:50.492242+00:00",
@@ -47,6 +49,8 @@
 "odd": 1.96,
 "fair": 1.89,
 "ev": 0.0353,
-"status": "open"
+"status": "won",
+"result": "1",
+"score": "1-0"
 }
 }
