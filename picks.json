@@ -52,5 +52,21 @@
 "status": "won",
 "result": "1",
 "score": "1-0"
+},
+"3319375-1": {
+"first_seen": "2026-11-20T11:23:00.119110+00:00",
+"id": 3319375,
+"home": "CD Castellon B",
+"away": "UD Castellonense",
+"kickoff": "2026-11-22T11:00:00+00:00",
+"mbc": 3,
+"lg": "SP2",
+"fd_home": "Castellon",
+"fd_away": "Eldense",
+"pick": "1",
+"odd": 1.54,
+"fair": 1.49,
+"ev": 0.0303,
+"status": "open"
 }
 }
