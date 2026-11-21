@@ -68,5 +68,21 @@
 "fair": 1.49,
 "ev": 0.0303,
 "status": "open"
+},
+"3312601-2": {
+"first_seen": "2026-11-21T09:37:43.836386+00:00",
+"id": 3312601,
+"home": "Wolfsburg",
+"away": "Holstein Kiel",
+"kickoff": "2026-11-21T12:00:00+00:00",
+"mbc": 1,
+"lg": "D2",
+"fd_home": "Wolfsburg",
+"fd_away": "Holstein Kiel",
+"pick": "2",
+"odd": 4.82,
+"fair": 4.41,
+"ev": 0.094,
+"status": "open"
 }
 }
