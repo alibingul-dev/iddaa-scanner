@@ -67,7 +67,9 @@
 "odd": 1.54,
 "fair": 1.49,
 "ev": 0.0303,
-"status": "open"
+"status": "won",
+"result": "1",
+"score": "2-0"
 },
 "3312601-2": {
 "first_seen": "2026-11-21T09:37:43.836386+00:00",
@@ -83,6 +85,8 @@
 "odd": 4.82,
 "fair": 4.41,
 "ev": 0.094,
-"status": "open"
+"status": "lost",
+"result": "1",
+"score": "3-0"
 }
 }
