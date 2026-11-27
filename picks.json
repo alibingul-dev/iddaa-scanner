@@ -88,5 +88,21 @@
 "status": "lost",
 "result": "1",
 "score": "3-0"
+},
+"3347685-1": {
+"first_seen": "2026-11-27T18:51:02.494945+00:00",
+"id": 3347685,
+"home": "Benfica U23",
+"away": "FC Famalicao U23",
+"kickoff": "2026-11-30T15:30:00+00:00",
+"mbc": 3,
+"lg": "P1",
+"fd_home": "Benfica",
+"fd_away": "Famalicao",
+"pick": "1",
+"odd": 2.13,
+"fair": 1.21,
+"ev": 0.7532,
+"status": "open"
 }
 }
